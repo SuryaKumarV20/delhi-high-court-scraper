@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Court Case Fetcher</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Delhi High Court Case Info Fetcher</h2>
+        <form method="POST">
+            <label>Case Type:</label>
+            <input type="text" name="case_type" placeholder="e.g. W.P.(C)" required>
+
+            <label>Case Number:</label>
+            <input type="text" name="case_number" placeholder="e.g. 1234" required>
+
+            <label>Filing Year:</label>
+            <input type="text" name="filing_year" placeholder="e.g. 2023" required>
+
+            <button type="submit">Fetch Case Details</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if case_data %}
+            <div class="result">
+                <h3>Fetched Data:</h3>
+                {{ case_data|safe }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
